@@ -1,0 +1,17 @@
+{
+    "name": "vojtechrichter/html_form_builder",
+    "autoload": {
+        "psr-4": {
+            "HtmlFormBuilder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vojtechrichter",
+            "email": "vojta3218@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3"
+    }
+}
