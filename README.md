@@ -15,7 +15,7 @@ use HtmlFormBuilder\FormElement\InputFormElement\InputFormElementType;
 use HtmlFormBuilder\FormElement\SelectFormElement\OptionFormElement;
 use HtmlFormBuilder\FormElement\SelectFormElement\SelectFormElement;
 
-require(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '/vendor/autoload.php');
 
 $form_builder = new FormBuilder();
 
