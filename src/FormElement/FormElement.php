@@ -2,7 +2,7 @@
 
 namespace HtmlFormBuilder\FormElement;
 
-use HtmlFormBuilder\FormElement\FormAttribute\FormAttribute;
+use HtmlFormBuilder\FormElement\FormElementAttribute\FormElementAttribute;
 
 abstract class FormElement
 {
@@ -10,7 +10,7 @@ abstract class FormElement
     protected string $label;
     protected string $tag_value;
 
-    /** @var FormAttribute[] $attributes */
+    /** @var FormElementAttribute[] $attributes */
     protected array $attributes = [];
 
     public function __construct(string $name, string $label = "", string $tag_value = "")
@@ -20,7 +20,7 @@ abstract class FormElement
         $this->tag_value = $tag_value;
     }
 
-    public function addAttribute(FormAttribute $attribute): self
+    public function addAttribute(FormElementAttribute $attribute): self
     {
         $this->attributes[] = $attribute;
 
@@ -30,8 +30,11 @@ abstract class FormElement
     protected function getAttributesString(): string
     {
         $attributes_str = "";
-        foreach ($this->attributes as $attribute) {
-            $attributes_str .= $attribute->render();
+        foreach ($this->attributes as $idx => $attribute) {
+            // is last attribute?
+            $attributes_str .= ($idx === count($this->attributes) - 1) ?
+                $attribute->render() :
+                ($attribute->render() . " ");
         }
 
         return $attributes_str;

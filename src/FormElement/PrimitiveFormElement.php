@@ -2,12 +2,12 @@
 
 namespace HtmlFormBuilder\FormElement;
 
-use HtmlFormBuilder\FormElement\FormAttribute\FormAttribute;
+use HtmlFormBuilder\FormElement\FormElementAttribute\FormElementAttribute;
 
 abstract class PrimitiveFormElement
 {
     protected string $tag_value;
-    /** @var FormAttribute[] $attributes */
+    /** @var FormElementAttribute[] $attributes */
     protected array $attributes = [];
 
     public function __construct(string $tag_value = "")
@@ -15,7 +15,7 @@ abstract class PrimitiveFormElement
         $this->tag_value = $tag_value;
     }
 
-    public function addAttribute(FormAttribute $attribute): self
+    public function addAttribute(FormElementAttribute $attribute): self
     {
         $this->attributes[] = $attribute;
 

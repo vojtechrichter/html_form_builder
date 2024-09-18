@@ -31,9 +31,11 @@ final class SelectFormElement extends FormElement
         $label_html = $this->label !== "" ?
             "<label for=\"{$this->name}\">{$this->label}</label>" :
             "";
-        $attributes_html = $this->getAttributesString();
+        $attributes_html = $this->getAttributesString() !== "" ?
+            (" " . $this->getAttributesString()) :
+            "";
         $options_html = $this->getOptionsString();
-        $final_html = "$label_html<select name=\"{$this->name}\" $attributes_html>$options_html</select>";
+        $final_html = "$label_html<select name=\"{$this->name}\"$attributes_html>$options_html</select>";
 
         return $final_html;
     }

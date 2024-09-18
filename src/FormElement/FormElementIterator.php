@@ -2,7 +2,7 @@
 
 namespace HtmlFormBuilder\FormElement;
 
-final class FormElementIterator implements \Iterator, \Countable, \ArrayAccess
+final class FormElementIterator implements \Iterator, \Countable
 {
     /** @var FormElement[] $elements */
     private array $elements;
@@ -37,26 +37,6 @@ final class FormElementIterator implements \Iterator, \Countable, \ArrayAccess
     public function rewind(): void
     {
         $this->position = 0;
-    }
-
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->elements[$offset]);
-    }
-
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->elements[$offset];
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        $this->elements[$offset] = $value;
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->elements[$offset]);
     }
 
     public function count(): int

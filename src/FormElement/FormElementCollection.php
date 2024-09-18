@@ -2,7 +2,7 @@
 
 namespace HtmlFormBuilder\FormElement;
 
-final class FormElementCollection implements \IteratorAggregate, \Countable
+final class FormElementCollection implements \IteratorAggregate, \Countable, \ArrayAccess
 {
     /** @var FormElement[] $elements */
     private array $elements;
@@ -25,6 +25,9 @@ final class FormElementCollection implements \IteratorAggregate, \Countable
         return $this->elements;
     }
 
+    /**
+     * @return FormElementIterator
+     */
     public function getIterator(): \Traversable
     {
         return new FormElementIterator($this->elements);
@@ -33,5 +36,30 @@ final class FormElementCollection implements \IteratorAggregate, \Countable
     public function count(): int
     {
         return count($this->elements);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->elements[$offset]);
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->elements[$offset];
+    }
+
+    /**
+     * @param int $offset
+     * @param FormElement $value
+     * @return void
+     */
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        $this->elements[$offset] = $value;
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        // TODO: Implement offsetUnset() method.
     }
 }

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace HtmlFormBuilder\FormElement\FormAttribute;
+namespace HtmlFormBuilder\FormElement\FormElementAttribute;
 
-class FormAttribute implements \Stringable
+class FormElementAttribute implements \Stringable
 {
     private string $key;
     private string $value;
-    private FormAttributeValueDataType $value_data_type;
+    private FormElementAttributeValueDataType $value_data_type;
     private bool $is_key_only;
 
     /**
@@ -16,7 +16,7 @@ class FormAttribute implements \Stringable
     public function __construct(
         string $key,
         string $value = "",
-        FormAttributeValueDataType $value_data_type = FormAttributeValueDataType::STRING
+        FormElementAttributeValueDataType $value_data_type = FormElementAttributeValueDataType::STRING
     )
     {
         $this->key = $key;
@@ -40,7 +40,7 @@ class FormAttribute implements \Stringable
         return $this->value;
     }
 
-    public function getValueDataType(): FormAttributeValueDataType
+    public function getValueDataType(): FormElementAttributeValueDataType
     {
         return $this->value_data_type;
     }
@@ -55,7 +55,7 @@ class FormAttribute implements \Stringable
         $string_attr = $this->isKeyOnly() ?
             "$this->key" :
             "$this->key=" . (
-                $this->getValueDataType() === FormAttributeValueDataType::STRING ?
+                $this->getValueDataType() === FormElementAttributeValueDataType::STRING ?
                 "\"$this->value\"" :
                 intval($this->value)
             );
